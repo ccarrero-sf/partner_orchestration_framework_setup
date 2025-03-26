@@ -3,7 +3,7 @@ tables:
   - name: SP500
     description: 'SP500 company stocks and related metrics' # <FILL-OUT>
     base_table:
-      database: CUBE_TESTING
+      database: P_ORCHESTRATION_FRAMEWORK
       schema: PUBLIC
       table: SP500
     filters:

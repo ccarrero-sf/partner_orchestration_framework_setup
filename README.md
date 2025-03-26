@@ -49,3 +49,8 @@ CREATE OR REPLACE NOTEBOOK OF_GATEWAY_QUICKSTART
 
 ```
 
+Open the OF_GATEWAY_QUICKSTART, on the top, go to Packages, click on Stage Packages and paste:
+
+@P_ORCHESTRATION_FRAMEWORK.PUBLIC.IMPORTS/agent_gateway.zip
+
+Then click on Import
