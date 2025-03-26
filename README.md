@@ -11,14 +11,14 @@ Run this code:
 
 CREATE or replace DATABASE P_ORCHESTRATION_FRAMEWORK;
 
-CREATE OR REPLACE API INTEGRATION API_P_ORCHESTRATION_FRAMEWORK;
+CREATE OR REPLACE API INTEGRATION API_P_ORCHESTRATION_FRAMEWORK
   API_PROVIDER = git_https_api
   API_ALLOWED_PREFIXES = ('https://github.com/ccarrero-sf/')
   ENABLED = TRUE;
 
 CREATE OR REPLACE GIT REPOSITORY GITHUB_P_ORCHESTRATION_FRAMEWORK
     api_integration = API_P_ORCHESTRATION_FRAMEWORK
-    origin = 'https://github.com/partner_orchestration_framework_setup';
+    origin = 'https://github.com/ccarrero-sf/partner_orchestration_framework_setup';
 
 -- Make sure we get the latest files
 ALTER GIT REPOSITORY GITHUB_P_ORCHESTRATION_FRAMEWORK FETCH;
