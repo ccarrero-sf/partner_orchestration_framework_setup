@@ -5,7 +5,7 @@ This is the code to easily get Orchesrtration Framework up and running
 Main and continuously update repository can be found here:
 https://github.com/Snowflake-Labs/orchestration-framework
 
-Run this code:
+Run this code to automatically create a database, get some data and install a notebook within Streamlit in Snowflake:
 
 ```sql
 
@@ -53,6 +53,29 @@ CREATE OR REPLACE NOTEBOOK OF_GATEWAY_QUICKSTART
 
 Open the OF_GATEWAY_QUICKSTART, on the top, go to Packages, click on Stage Packages and paste:
 
+```sql
 @P_ORCHESTRATION_FRAMEWORK.PUBLIC.IMPORTS/agent_gateway.zip
+```
 
 Then click on Import
+
+## Install in your local setup
+
+Follow these instructions to install it in your laptop for greater flexibility:
+
+1. Create a conda environment and activate it.
+
+```code
+conda create -n orchestration_framework python=3.11
+conda activate orchestration_framework
+```
+
+2. Install the Orchestration Framework
+
+```code
+pip install orchestration-framework
+```
+
+
+
+
