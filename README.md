@@ -1,11 +1,16 @@
 # Partner Orchestration Framework Setup
 
-This is the code to easily get Orchesrtration Framework up and running
+This is the code to easily get Orchesrtration Framework up and running within Snowflake. The first step creates a database called P_ORCHESTRATION_FRAMEWORK, uses Snowflake Git integration to clone this repository within that database, runs the setup.sql script that generate some data and create the services needed as example to run the Agent.
 
-Main and continuously update repository can be found here:
+Main and continuously update repository for Orchestration Framework can be found here:
 https://github.com/Snowflake-Labs/orchestration-framework
 
-Run this code to automatically create a database, get some data and install a notebook within Streamlit in Snowflake:
+Kudos to Alejandro Herrera & Tyler White for creating this great framework!
+
+
+## 1. Automatic Setup
+
+Run this code to automatically create a database, get some data, install a notebook in Snowflake you can use to understand how the framework works and also one Streamlit in Snowflake App. In your Snowflake account, open a new Worksheet, copy & paste:
 
 ```sql
 
@@ -67,17 +72,18 @@ CREATE OR REPLACE STREAMLIT P_ORCHESTATOR_CHATBOT
 
 ```
 
-Open the OF_GATEWAY_QUICKSTART, on the top, go to Packages, click on Stage Packages and paste:
+Open the OF_GATEWAY_QUICKSTART Notebook, on the top, go to Packages, click on Stage Packages and paste:
 
 ```sql
 @P_ORCHESTRATION_FRAMEWORK.PUBLIC.IMPORTS/agent_gateway.zip
 ```
 
-Then click on Import
+Then click on Import. Run the Notebook step by step and notice how the Tools and Agent are created.
 
-## Install in your local setup
 
-Follow these instructions to install it in your laptop for greater flexibility:
+## 2. Install in your local setup
+
+You can also make this work in your local environment or within Snowpark Container Services. You can also modify the source code to personalize your agent and adapt it to the tools you want to use. We recommend always take a look to the latest version of the official repository. This repository is frozen image for demo purposes.
 
 1. Create a conda environment and activate it.
 
@@ -86,11 +92,49 @@ conda create -n orchestration_framework python=3.11
 conda activate orchestration_framework
 ```
 
-2. Install the Orchestration Framework
+2. Install the Orchestration Framework using pip
 
 ```code
 pip install orchestration-framework
 ```
+
+3. Install these other packages
+
+```code
+pip install streamlit
+pip install dotenv
+pip install trulens
+pip install trulens-connectors-snowflake
+```
+
+4. If you want to test the Quickstart Notebook locally, [Download it from here](!https://github.com/ccarrero-sf/partner_orchestration_framework_setup/blob/main/QUICKSTART.ipynb)
+
+You first have to create a .env file in the same folder where you have saved the Quickstart notebook. Replace it with your own values:
+
+SNOWFLAKE_HOST='xxxxx.snowflakecomputing.com'
+SNOWFLAKE_ACCOUNT='xxxxx'
+SNOWFLAKE_USER='youruser'
+SNOWFLAKE_ROLE='ACCOUNTADMIN'
+SNOWFLAKE_PASSWORD='yourpassword'
+SNOWFLAKE_DATABASE='P_ORCHESTRATION_FRAMEWORK'
+SNOWFLAKE_SCHEMA='PUBLIC'
+SNOWFLAKE_WAREHOUSE='COMPUTE_WH'
+
+Run jupyter notebook and select the QUickstart notebook
+
+```code
+jupyter notebook
+```
+
+5. Download the [Streamlit App](!https://github.com/ccarrero-sf/partner_orchestration_framework_setup/blob/main/app.py) and Run it:
+
+```code
+streamlit run app.py
+```
+
+
+
+
 
 
 
