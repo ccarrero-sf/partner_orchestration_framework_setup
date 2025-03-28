@@ -65,6 +65,7 @@ if "snowpark" not in st.session_state or st.session_state.snowpark is None:
             "user": os.getenv("SNOWFLAKE_USER"),
             "role": os.getenv("SNOWFLAKE_ROLE"),         
             "account": os.getenv("SNOWFLAKE_ACCOUNT"),
+            "password": os.getenv("SNOWFLAKE_PASSWORD"),            
             "warehouse": os.getenv("SNOWFLAKE_WAREHOUSE"),
             "database": os.getenv("SNOWFLAKE_DATABASE"),
             "schema": os.getenv("SNOWFLAKE_SCHEMA"),
