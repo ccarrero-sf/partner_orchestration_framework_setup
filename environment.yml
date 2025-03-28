@@ -4,3 +4,4 @@ channels:
 dependencies:
   - aiohttp=3.11.10
   - pydantic=2.10.3
+  - trulens-connectors-snowflake=1.4.5

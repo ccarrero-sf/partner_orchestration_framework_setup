@@ -20,21 +20,24 @@ import sys
 import threading
 import uuid
 import warnings
-
 import requests
+
+from agent_gateway.tools.utils import _determine_runtime
+
 import streamlit as st
+from dotenv import load_dotenv
 from snowflake.snowpark import Session
 
 from agent_gateway import Agent
 from agent_gateway.tools import CortexAnalystTool, CortexSearchTool, PythonTool
-from agent_gateway.tools.utils import _determine_runtime, parse_log_message
+from agent_gateway.tools.utils import parse_log_message
+
+from snowflake.snowpark.context import get_active_session
+
 
 warnings.filterwarnings("ignore")
 st.set_page_config(page_title="Agent Gateway")
 
-
-from snowflake.snowpark.context import get_active_session
-snowpark = get_active_session()
 
 def html_crawl(url):
     response = requests.get(url)
@@ -52,7 +55,22 @@ if "prompt_history" not in st.session_state:
     st.session_state["prompt_history"] = {}
 
 if "snowpark" not in st.session_state or st.session_state.snowpark is None:
-    st.session_state.snowpark = snowpark
+
+    if _determine_runtime():
+        st.session_state.snowpark = get_active_session()
+    
+    else:   
+        load_dotenv()
+        connection_parameters = {
+            "account": os.getenv("SNOWFLAKE_ACCOUNT"),
+            "warehouse": os.getenv("SNOWFLAKE_WAREHOUSE"),
+            "database": os.getenv("SNOWFLAKE_DATABASE"),
+            "schema": os.getenv("SNOWFLAKE_SCHEMA"),
+        }
+        
+        st.session_state.snowpark = Session.builder.configs(
+            connection_parameters
+        ).getOrCreate()
 
     search_config = {
         "service_name": "SEC_SEARCH_SERVICE",
