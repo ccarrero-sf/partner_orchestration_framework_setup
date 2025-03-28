@@ -1,6 +1,6 @@
 # Partner Orchestration Framework Setup
 
-This is the code to easily get Orchesrtration Framework up and running within Snowflake. The first step creates a database called P_ORCHESTRATION_FRAMEWORK, uses Snowflake Git integration to clone this repository within that database, runs the setup.sql script that generate some data and create the services needed as example to run the Agent.
+This is the code to easily get the Orchesrtration Framework built by Snowflake's Solution Innovation Team up and running within Snowflake. The first step creates a database called P_ORCHESTRATION_FRAMEWORK, uses Snowflake Git integration to clone this repository within that database, runs the setup.sql script that generate some data and create the services needed as example to run the Agent.
 
 Main and continuously update repository for Orchestration Framework can be found here:
 https://github.com/Snowflake-Labs/orchestration-framework
