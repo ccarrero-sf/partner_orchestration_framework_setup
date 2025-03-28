@@ -94,7 +94,7 @@ conda activate orchestration_framework
 2. Install the Orchestration Framework using pip
 
 ```code
-pip install orchestration-framework
+pip install "orchestration-framework[trulens]"
 ```
 
 3. Install these other packages
@@ -102,8 +102,7 @@ pip install orchestration-framework
 ```code
 pip install streamlit
 pip install dotenv
-pip install trulens
-pip install trulens-connectors-snowflake
+
 ```
 
 4. If you want to test the Quickstart Notebook locally, [Download it from here](https://github.com/ccarrero-sf/partner_orchestration_framework_setup/blob/main/QUICKSTART.ipynb)

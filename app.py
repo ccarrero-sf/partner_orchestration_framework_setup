@@ -62,6 +62,8 @@ if "snowpark" not in st.session_state or st.session_state.snowpark is None:
     else:   
         load_dotenv()
         connection_parameters = {
+            "user": os.getenv("SNOWFLAKE_USER"),
+            "role": os.getenv("SNOWFLAKE_ROLE"),         
             "account": os.getenv("SNOWFLAKE_ACCOUNT"),
             "warehouse": os.getenv("SNOWFLAKE_WAREHOUSE"),
             "database": os.getenv("SNOWFLAKE_DATABASE"),
