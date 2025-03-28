@@ -64,8 +64,9 @@ if "snowpark" not in st.session_state or st.session_state.snowpark is None:
         connection_parameters = {
             "user": os.getenv("SNOWFLAKE_USER"),
             "role": os.getenv("SNOWFLAKE_ROLE"),         
-            "account": os.getenv("SNOWFLAKE_ACCOUNT"),
             "password": os.getenv("SNOWFLAKE_PASSWORD"),            
+
+            "account": os.getenv("SNOWFLAKE_ACCOUNT"),
             "warehouse": os.getenv("SNOWFLAKE_WAREHOUSE"),
             "database": os.getenv("SNOWFLAKE_DATABASE"),
             "schema": os.getenv("SNOWFLAKE_SCHEMA"),
@@ -304,7 +305,8 @@ with st.container(border=False):
                         source["metadata"] for source in current_prompt.get("sources")
                     ]
                     for i in citations_metadata:
-                        sources.append(list(i[0].values())[0])
+                        value = list(i[0].values())[0] if i and i[0] else "Unknown"
+                        sources.append(str(value))
 
                     st.markdown(
                         """
